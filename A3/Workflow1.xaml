@@ -1,0 +1,333 @@
+﻿<Activity mc:Ignorable="sads sap sap2010" x:Class="A3.Workflow1" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="A3.Workflow1_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:ag="clr-namespace:A3.GenerateNumber"
+ xmlns:local="clr-namespace:A3.GenerateNumber.Activities"
+ xmlns:local1="clr-namespace:A3"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:sc="clr-namespace:System.ComponentModel;assembly=System"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>A3</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="lower" />
+      <Variable x:TypeArguments="x:String" Name="upper" />
+      <Variable x:TypeArguments="x:Int32" Name="nsd" />
+      <Variable x:TypeArguments="x:Int32" Name="secretNumber" />
+      <Variable x:TypeArguments="x:String" Name="restart" />
+      <Variable x:TypeArguments="x:Int32" Name="correctGuess" />
+    </Sequence.Variables>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">restart</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">continue</InArgument>
+      </Assign.Value>
+    </Assign>
+    <While sap2010:WorkflowViewState.IdRef="While_3">
+      <While.Condition>
+        <mca:CSharpValue x:TypeArguments="x:Boolean">restart !="end"</mca:CSharpValue>
+      </While.Condition>
+      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Please input a number for the lower bound" />
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">lower</mca:CSharpReference>
+            </OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine();</mca:CSharpValue>
+            </InArgument>
+          </Assign.Value>
+        </Assign>
+        <While sap2010:WorkflowViewState.IdRef="While_1">
+          <While.Variables>
+            <Variable x:TypeArguments="x:Int32" Name="n" />
+          </While.Variables>
+          <While.Condition>
+            <mca:CSharpValue x:TypeArguments="x:Boolean">!(int.TryParse(lower, out n))</mca:CSharpValue>
+          </While.Condition>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Please input a number for the lower bound" />
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <mca:CSharpReference x:TypeArguments="x:String">lower</mca:CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine();</mca:CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </While>
+        <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_3">
+          <InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">"\nPlease input a number for the upper bound"</mca:CSharpValue>
+          </InArgument>
+        </WriteLine>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">upper</mca:CSharpReference>
+            </OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine();</mca:CSharpValue>
+            </InArgument>
+          </Assign.Value>
+        </Assign>
+        <While sap2010:WorkflowViewState.IdRef="While_2">
+          <While.Variables>
+            <Variable x:TypeArguments="x:Int32" Name="n" />
+          </While.Variables>
+          <While.Condition>
+            <mca:CSharpValue x:TypeArguments="x:Boolean">!(int.TryParse(upper, out n))</mca:CSharpValue>
+          </While.Condition>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="Please input a number for the upper bound" />
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <mca:CSharpReference x:TypeArguments="x:String">upper</mca:CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine();</mca:CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </While>
+        <local:GenerateNumber sap2010:WorkflowViewState.IdRef="GenerateNumber_1" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+          <local:GenerateNumber.GenerateNumberResult>
+            <OutArgument x:TypeArguments="x:Int32">
+              <mca:CSharpReference x:TypeArguments="x:Int32">secretNumber</mca:CSharpReference>
+            </OutArgument>
+          </local:GenerateNumber.GenerateNumberResult>
+          <local:GenerateNumber.lower>
+            <InArgument x:TypeArguments="x:Int32">
+              <mca:CSharpValue x:TypeArguments="x:Int32">Int32.Parse(lower)</mca:CSharpValue>
+            </InArgument>
+          </local:GenerateNumber.lower>
+          <local:GenerateNumber.upper>
+            <InArgument x:TypeArguments="x:Int32">
+              <mca:CSharpValue x:TypeArguments="x:Int32">Int32.Parse(upper)</mca:CSharpValue>
+            </InArgument>
+          </local:GenerateNumber.upper>
+        </local:GenerateNumber>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">
+                <mca:CSharpReference x:TypeArguments="x:Int32">correctGuess</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <While sap2010:WorkflowViewState.IdRef="While_4">
+            <While.Condition>
+              <mca:CSharpValue x:TypeArguments="x:Boolean">correctGuess==0</mca:CSharpValue>
+            </While.Condition>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="guess" />
+              </Sequence.Variables>
+              <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_6">
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">"\nmake a Guess"</mca:CSharpValue>
+                </InArgument>
+              </WriteLine>
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">
+                    <mca:CSharpReference x:TypeArguments="x:String">guess</mca:CSharpReference>
+                  </OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine()</mca:CSharpValue>
+                  </InArgument>
+                </Assign.Value>
+              </Assign>
+              <While sap2010:WorkflowViewState.IdRef="While_5">
+                <While.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="n" />
+                </While.Variables>
+                <While.Condition>
+                  <mca:CSharpValue x:TypeArguments="x:Boolean">!(int.TryParse(guess, out n))</mca:CSharpValue>
+                </While.Condition>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">
+                      <mca:CSharpReference x:TypeArguments="x:String">guess</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine()</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+              </While>
+              <local1:CheckNumber sap2010:WorkflowViewState.IdRef="CheckNumber_1">
+                <local1:CheckNumber.SecretNumber>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">secretNumber.ToString()</mca:CSharpValue>
+                  </InArgument>
+                </local1:CheckNumber.SecretNumber>
+                <local1:CheckNumber.Text>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">guess</mca:CSharpValue>
+                  </InArgument>
+                </local1:CheckNumber.Text>
+                <local1:CheckNumber.check>
+                  <OutArgument x:TypeArguments="x:Int32">
+                    <mca:CSharpReference x:TypeArguments="x:Int32">correctGuess</mca:CSharpReference>
+                  </OutArgument>
+                </local1:CheckNumber.check>
+              </local1:CheckNumber>
+            </Sequence>
+          </While>
+        </Sequence>
+        <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_8">
+          <InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">"\ntype end to end the game or press enter to restart"</mca:CSharpValue>
+          </InArgument>
+        </WriteLine>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">restart</mca:CSharpReference>
+            </OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine()</mca:CSharpValue>
+            </InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+    </While>
+    <sads:DebugSymbol.Symbol>dx9FOlxDU0UgNDQ2XEEzXEEzXFdvcmtmbG93MS54YW1sPysDgAIOAgEBNAU9DgMB/QE+Bf4BDQIBAjswOzgDAYUCNws3WAMB/gFCB/0BEgIBCkAJQFcCAQNDCUN1AwH7AUQJTxIDAewBUAlmEQMBzwFnCWsVAwHHAWwJdxIDAbgBeAmOAREDAZsBjwEJnwEgAwGFAaABCesBFAIBIuwBCfABFQIBGvEBCfwBEgIBC0NHQ3IDAfwBTA9MYAMB9AFHD0daAwHtAVcLZRYDAdgBVQ1VaQMB0AFpDWl4AwHIAXQPdGADAcABbw9vWgMBuQF/C40BFgMBpAF9DX1pAwGcAZwBD5wBXgMBlAGXAQ+XAV4DAY0BkgEPkgFgAwGGAaEBC6oBFAIBfKsBC+oBEwIBI+4BDe4BgQECARv5AQ/5AV8CARP0AQ/0AVwCAQxYDVh5AwHqAVkNZBYDAdkBgAENgAF5AwG2AYEBDYwBFgMBpQGoATWoATYDAYQBpAERpAFiAgF9rwEN6QEYAgErrQEPrQFdAgEkWEtYdgMB6wFhE2FkAwHiAVwTXF4DAdoBgAFLgAF2AwG3AYkBE4kBZAMBrgGEAROEAV4DAaYBswEPtwEbAgFzuAEPwwEYAgFixAEP1wEXAgFF2AEP6AEkAgEstQETtQFhAgF0wAEVwAFlAgFruwEVuwFgAgFjywER1gEaAgFPyQETyQFvAgFG2wEV2wFqAgE95QEV5QFmAgE14AEV4AFYAgEt0wEX0wFnAgFZzgEXzgFiAgFQ</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="582,62" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="534,62" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="534,62" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="264,288">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="534,448" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="534,62" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="534,62" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="264,288">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_2" sap:VirtualizedContainerService.HintSize="534,448" />
+      <sap2010:ViewStateData Id="GenerateNumber_1" sap:VirtualizedContainerService.HintSize="534,22" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="512,62" />
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="While_5" sap:VirtualizedContainerService.HintSize="464,222" />
+      <sap2010:ViewStateData Id="CheckNumber_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="486,612">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_4" sap:VirtualizedContainerService.HintSize="512,772" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="534,998">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_8" sap:VirtualizedContainerService.HintSize="534,62" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="534,62" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="556,2772">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_3" sap:VirtualizedContainerService.HintSize="582,2932">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="604,3158">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="A3.Workflow1_1" sap:VirtualizedContainerService.HintSize="644,3238" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

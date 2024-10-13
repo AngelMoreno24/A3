@@ -1,0 +1,84 @@
+<Activity mc:Ignorable="sap2010 sads" x:Class="A3.GenerateNumber.Activities.GenerateNumber" this:GenerateNumber.EndpointConfigurationName="BasicHttpBinding_IService1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:ag="clr-namespace:A3.GenerateNumber;assembly=A3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+ xmlns:ag1="clr-namespace:A3.GenerateNumber;assembly=A3"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://tempuri.org/"
+ xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:sc="clr-namespace:System.ComponentModel;assembly=System"
+ xmlns:this="clr-namespace:A3.GenerateNumber.Activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="EndpointConfigurationName" Type="x:String">
+      <x:Property.Attributes>
+        <sc:DefaultValueAttribute>
+          <x:Arguments>
+            <x:String>BasicHttpBinding_IService1</x:String>
+          </x:Arguments>
+        </sc:DefaultValueAttribute>
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="lower" Type="InArgument(x:Int32)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="upper" Type="InArgument(x:Int32)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="GenerateNumberResult" Type="OutArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
+  <Sequence>
+    <Sequence.Variables>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Sequence.Variables>
+    <p1:Send x:Name="__ReferenceID0" Action="http://tempuri.org/IService1/GenerateNumber" OperationName="GenerateNumber" ServiceContractName="p:IService1">
+      <p1:Send.CorrelationInitializers>
+        <p1:RequestReplyCorrelationInitializer>
+          <p1:RequestReplyCorrelationInitializer.CorrelationHandle>
+            <InArgument x:TypeArguments="p1:CorrelationHandle">
+              <VariableValue x:TypeArguments="p1:CorrelationHandle">
+                <VariableValue.Variable>
+                  <Variable x:TypeArguments="p1:CorrelationHandle" x:Name="__ReferenceID2" />
+                </VariableValue.Variable>
+              </VariableValue>
+            </InArgument>
+          </p1:RequestReplyCorrelationInitializer.CorrelationHandle>
+        </p1:RequestReplyCorrelationInitializer>
+      </p1:Send.CorrelationInitializers>
+      <p1:SendMessageContent>
+        <InArgument x:TypeArguments="ag1:GenerateNumberRequest">[New A3.GenerateNumber.GenerateNumberRequest() With { .lower = lower, .upper = upper }]</InArgument>
+      </p1:SendMessageContent>
+      <p1:Send.EndpointConfigurationName>
+        <PropertyReference x:TypeArguments="x:String" PropertyName="EndpointConfigurationName" />
+      </p1:Send.EndpointConfigurationName>
+    </p1:Send>
+    <p1:ReceiveReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/IService1/GenerateNumberResponse">
+      <p1:ReceiveMessageContent>
+        <OutArgument x:TypeArguments="ag1:GenerateNumberResponse">
+          <VariableReference x:TypeArguments="ag1:GenerateNumberResponse">
+            <VariableReference.Variable>
+              <Variable x:TypeArguments="ag1:GenerateNumberResponse" x:Name="__ReferenceID1" Name="tempResult_c2f8c04477b3485e9b6906d1b93075ee" />
+            </VariableReference.Variable>
+          </VariableReference>
+        </OutArgument>
+      </p1:ReceiveMessageContent>
+    </p1:ReceiveReply>
+    <Assign>
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[GenerateNumberResult]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[tempResult_c2f8c04477b3485e9b6906d1b93075ee.GenerateNumberResult]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <sads:DebugSymbol.Symbol>d2JFOlxDU0UgNDQ2XEEzXEEzXENvbm5lY3RlZCBTZXJ2aWNlc1xHZW5lcmF0ZU51bWJlclxBMy5HZW5lcmF0ZU51bWJlci5JU2VydmljZTEuR2VuZXJhdGVOdW1iZXIueGFtbAklA1MOAgEBKgU+DwIBCj8FSRcCAQdKBVEOAgECOUE5mAECAQwvDzMfAgELQgtGHwIBCU8vT3ECAQVMMExGAgED</sads:DebugSymbol.Symbol>
+  </Sequence>
+</Activity>
